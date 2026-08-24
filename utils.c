@@ -59,5 +59,25 @@ char    *extract_texture(char *line, int *i)
     return (path);
 }
 
-int map_validation(char **map)
-{}
+int all_data_found(t_info *info)
+{
+    if (!info->textures.NO
+        || !info->textures.SO
+        || !info->textures.WE
+        || !info->textures.EA
+        || !info->floor
+        || !info->ceil)
+        return (0);
+    return (1);
+}
+
+void free_info(t_info *info)
+{
+    free(info->textures.NO);
+    free(info->textures.SO);
+    free(info->textures.WE);
+    free(info->textures.EA);
+    free(info->floor);
+    free(info->ceil);
+    // later free map
+}
