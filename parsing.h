@@ -34,6 +34,7 @@ typedef struct s_info
     int max_col;
     int row;
     int player[2]; //[x,y]
+    char player_dir;
 } t_info;
 
 char *get_next_line(int fd);
