@@ -117,6 +117,11 @@ int main(int argc, char **argv)
         free_info(&info);
         return (printf("Error\nInvalid texture configuration\n"), 1);
     }
+    if (!info_validation(&info))
+    {
+        free_info(&info);
+        return (printf("Error\n"), 1);
+    }
     print_textures(&info);
     print_map(&info);
     free_info(&info);

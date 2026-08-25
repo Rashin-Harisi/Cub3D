@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "libft.h"
 
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 64
@@ -25,6 +26,8 @@ typedef struct s_info
     t_texture textures;
     char *floor;
     char *ceil;
+    int  rgb_floor[3];
+    int  rgb_ceil[3];
     char **map;
     int map_row;
 } t_info;
@@ -44,5 +47,11 @@ int extract_ceil(char *line, int i, t_info *info);
 int all_data_found(t_info *info);
 void free_info(t_info *info);
 int extract_map(char *line, t_info *info);
+int info_validation(t_info *info);
+char	**ft_split(char const *s, char c);
+void free_array(char **array);
+int texture_validation(t_texture *textures);
+int rgb_validation(t_info *info);
+int map_validation(char **map);
 
 #endif

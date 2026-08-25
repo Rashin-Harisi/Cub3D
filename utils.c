@@ -81,3 +81,18 @@ void free_info(t_info *info)
     free(info->ceil);
     // later free map
 }
+
+void free_array(char **array)
+{
+    int	i;
+
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
