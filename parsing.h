@@ -29,7 +29,11 @@ typedef struct s_info
     int  rgb_floor[3];
     int  rgb_ceil[3];
     char **map;
+    char **rect_map;
     int map_row;
+    int max_col;
+    int row;
+    int player[2]; //[x,y]
 } t_info;
 
 char *get_next_line(int fd);
@@ -50,7 +54,7 @@ char	**ft_split(char const *s, char c);
 void free_array(char **array);
 int texture_validation(t_texture *textures);
 int rgb_validation(t_info *info);
-int map_validation(char **map);
+int map_validation(t_info *info);
 char    *extract_rgb(char *line, int *i);
 
 #endif

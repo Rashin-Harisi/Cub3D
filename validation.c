@@ -6,7 +6,7 @@ int info_validation(t_info *info)
         return (printf("Textures validation failed\n"), 0);
     if (!rgb_validation(info))
         return (printf("RGB validation failed\n"), 0);
-    if (!map_validation(info->map))
+    if (!map_validation(info))
         return (printf("Map validation failed\n"), 0);
     return (1);
 }
