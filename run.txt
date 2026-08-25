@@ -1,0 +1,1 @@
+cc main.c parsing.h extract_data.c extract_map.c get_next_line.c map_validation.c rgb_validation.c textures_validation.c utils.c validation.c ./libft/*.c

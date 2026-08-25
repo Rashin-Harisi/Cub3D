@@ -1,11 +1,11 @@
-NO        ./path_to_the_north_texture
-SO      ./path_to_the_south_texture
-WE  ./path_to_the_west_texture
-EA  ./path_to_the_east_texture
+NO        ./textures/north_file.xpm
+SO      ./textures/south_file.xpm
+WE  ./textures/west_file.xpm
+EA  ./textures/east_file.xpm
 
 
-F     220,100,0
-C 225,30,0
+F     220,      100b,0
+C 225,  30,0
 
 
         1111111111111111111111111

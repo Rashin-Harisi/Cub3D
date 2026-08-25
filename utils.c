@@ -59,6 +59,49 @@ char    *extract_texture(char *line, int *i)
     return (path);
 }
 
+char    *extract_rgb(char *line, int *i)
+{
+    char    *rgb;
+    int     j;
+    int     a;
+
+    j = 0;
+    while (line[*i] == ' ' || line[*i] == '\t')
+        (*i)++;
+    if (line[*i] == '\n' || line[*i] == '\0')
+		return (NULL);
+    rgb = malloc(sizeof(char) * (ft_strlen(line + *i) + 1));
+    if (!rgb)
+        return (NULL);
+    while (line[*i]	&& line[*i] != '\n')
+    {
+        if (line[*i] == ' ' || line[*i] == '\t')
+        {
+            a = *i;
+            while (line[a] == ' ' || line[a] == '\t')
+                a++;
+            if (line[a] == '\n' || line[a] == '\0')
+                break;
+            if (line[a] == ',')
+            {
+                *i = a;
+                continue;
+            }
+            if (j > 0 && rgb[j - 1] == ',')
+            {
+                *i = a;
+                continue;
+            }
+            return (free(rgb), NULL);
+        }
+        rgb[j] = line[*i];
+        j++;
+        (*i)++;
+    }
+    rgb[j] = '\0';
+    return (rgb);
+}
+
 int all_data_found(t_info *info)
 {
     if (!info->textures.NO

@@ -50,7 +50,7 @@ int extract_floor(char *line, int i, t_info *info)
     if (info->floor != NULL)
         return (printf("Duplicated Floor RGB\n"), 0);
     i++;
-    info->floor = extract_texture(line, &i);
+    info->floor = extract_rgb(line, &i);
     if (!info->floor)
         return (printf("Invalid Floor Data\n"), 0);
     return (1);
@@ -61,7 +61,7 @@ int extract_ceil(char *line, int i, t_info *info)
     if (info->ceil != NULL)
         return (printf("Duplicated Ceiling RGB\n"), 0);
     i++;
-    info->ceil = extract_texture(line, &i);
+    info->ceil = extract_rgb(line, &i);
     if (!info->ceil)
         return (printf("Invalid Ceiling Data\n"), 0);
     return (1);

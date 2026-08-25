@@ -44,16 +44,14 @@ int *advanced_rgb_validation(char **rgb)
     while (i < 3)
     {
         j = 0;
-        while (rgb[i][j] == ' ' || rgb[i][j] == '\t')
-            j++;
         if (rgb[i][j] == '\0')
             return (free(rgb_int), NULL);
-        while (rgb[i][j] && ft_isdigit(rgb[i][j]))
+        while (rgb[i][j])
+        {
+            if (!ft_isdigit(rgb[i][j]))
+                return (free(rgb_int) , NULL);
             j++;
-        while (rgb[i][j] == ' ' || rgb[i][j] == '\t')
-            j++;
-        if (rgb[i][j] != '\0')
-            return (free(rgb_int), NULL);
+        }
         rgb_int[i] = ft_atoi(rgb[i]);
         if (rgb_int[i] < 0 || rgb_int[i] > 255)
             return (free(rgb_int), NULL);

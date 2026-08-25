@@ -70,8 +70,6 @@ void print_textures(t_info *info)
     printf("SO: %s\n", info->textures.SO);
     printf("WE: %s\n", info->textures.WE);
     printf("EA: %s\n", info->textures.EA);
-    printf("Floor: %s\n", info->floor);
-    printf("Ceiling: %s\n", info->ceil);
 }
 
 void	print_map(t_info *info)
@@ -92,6 +90,20 @@ void	print_map(t_info *info)
 	printf("Total rows: %d\n", i);
 }
 
+void	print_rgb(t_info *info)
+{
+	printf("Floor RGB: %d,%d,%d\n",
+		info->rgb_floor[0],
+		info->rgb_floor[1],
+		info->rgb_floor[2]);
+
+	printf("Ceiling RGB: %d,%d,%d\n",
+		info->rgb_ceil[0],
+		info->rgb_ceil[1],
+		info->rgb_ceil[2]);
+}
+
+
 int main(int argc, char **argv)
 {
     int fd;
@@ -106,7 +118,7 @@ int main(int argc, char **argv)
         return (printf("Error\nOpening file intrupted.\n"), 1);
     if (!reading_map_file(fd, &info))
     {
-        printf("Error\nReading file is failed");
+        printf("Error\n");
         close(fd);
         free_info(&info);
         return (1);
@@ -123,6 +135,7 @@ int main(int argc, char **argv)
         return (printf("Error\n"), 1);
     }
     print_textures(&info);
+    print_rgb(&info);
     print_map(&info);
     free_info(&info);
     return (0);
