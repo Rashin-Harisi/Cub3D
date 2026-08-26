@@ -63,5 +63,5 @@ int	wall_validation(t_info *info);
 void	skip_spaces(char *line, int *i);
 int	playable_tile(char **map);
 int	handle_rgb_space(char *line, int *i, char *rgb, int j);
-
+void    print(t_info *info);
 #endif
