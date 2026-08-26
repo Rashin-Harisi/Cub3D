@@ -19,10 +19,10 @@ int extract_info(char *line, t_info *info)
         return (extract_floor(line, i, info));
     if (line[i] == 'C' && (line[i + 1] == ' ' || line[i + 1] == '\t'))
         return (extract_ceil(line, i, info));
-    return (1);
+    return (0);
 }
 
-int reading_map_file(int fd, t_info *info)
+int reading_config_file(int fd, t_info *info)
 {
     char    *line;
     int     map_start;
@@ -72,19 +72,19 @@ void print_textures(t_info *info)
     printf("EA: %s\n", info->textures.EA);
 }
 
-void	print_map(t_info *info)
+void	print_map(char **map)
 {
 	int	i;
 
 	i = 0;
-	if (!info->map)
+	if (!map)
 	{
 		printf("Map is NULL\n");
 		return ;
 	}
-	while (info->map[i])
+	while (map[i])
 	{
-		printf("|%s|\n", info->map[i]);
+		printf("|%s|\n", map[i]);
 		i++;
 	}
 	printf("Total rows: %d\n", i);
@@ -116,7 +116,7 @@ int main(int argc, char **argv)
     fd = open(argv[1], O_RDONLY);
     if (fd < 0)
         return (printf("Error\nOpening file intrupted.\n"), 1);
-    if (!reading_map_file(fd, &info))
+    if (!reading_config_file(fd, &info))
     {
         printf("Error\n");
         close(fd);
@@ -134,9 +134,17 @@ int main(int argc, char **argv)
         free_info(&info);
         return (printf("Error\n"), 1);
     }
-    print_textures(&info);
-    print_rgb(&info);
-    print_map(&info);
+    if (!normalized_map(&info))
+    {
+        free_info(&info);
+        return (printf("Error\n"), 1);
+    }
+    //print_textures(&info);
+    //print_rgb(&info);
+    printf("parsed map:\n");
+    print_map(info.map);
+    printf("normalized map: \n");
+    print_map(info.rect_map);
     free_info(&info);
     return (0);
 }

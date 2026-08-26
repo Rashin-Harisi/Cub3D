@@ -116,13 +116,16 @@ int all_data_found(t_info *info)
 
 void free_info(t_info *info)
 {
+    if (!info)
+        return;
     free(info->textures.NO);
     free(info->textures.SO);
     free(info->textures.WE);
     free(info->textures.EA);
     free(info->floor);
     free(info->ceil);
-    // later free map
+    free_array(info->map);
+    free_array(info->rect_map);
 }
 
 void free_array(char **array)

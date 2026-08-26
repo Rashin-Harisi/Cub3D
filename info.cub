@@ -1,14 +1,17 @@
 NO        ./textures/north_file.xpm
 SO      ./textures/south_file.xpm
-WE  ./textures/west_file.xpm
-EA  ./textures/east_file.xpm
+
 
 
 F     220,      100,0
 C 225,  30,0
 
+WE  ./textures/west_file.xpm
+EA  ./textures/east_file.xpm
 
-11111
-10001
-1000E001
+   11111
+   10001
+11110E01
+10000001
+1000000011
 11111111

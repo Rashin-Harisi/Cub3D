@@ -26,8 +26,8 @@ typedef struct s_info
     t_texture textures;
     char *floor;
     char *ceil;
-    int  rgb_floor[3];
-    int  rgb_ceil[3];
+    int rgb_floor[3];
+    int rgb_ceil[3];
     char **map;
     char **rect_map;
     int map_row;
@@ -51,11 +51,12 @@ int all_data_found(t_info *info);
 void free_info(t_info *info);
 int extract_map(char *line, t_info *info);
 int info_validation(t_info *info);
-char	**ft_split(char const *s, char c);
+char **ft_split(char const *s, char c);
 void free_array(char **array);
 int texture_validation(t_texture *textures);
 int rgb_validation(t_info *info);
 int map_validation(t_info *info);
-char    *extract_rgb(char *line, int *i);
+char *extract_rgb(char *line, int *i);
+int normalized_map(t_info *info);
 
 #endif
