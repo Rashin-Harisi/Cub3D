@@ -58,5 +58,10 @@ int rgb_validation(t_info *info);
 int map_validation(t_info *info);
 char *extract_rgb(char *line, int *i);
 int normalized_map(t_info *info);
+int	character_validation(char **map);
+int	wall_validation(t_info *info);
+void	skip_spaces(char *line, int *i);
+int	playable_tile(char **map);
+int	handle_rgb_space(char *line, int *i, char *rgb, int j);
 
 #endif
