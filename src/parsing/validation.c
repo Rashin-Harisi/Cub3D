@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   character_validation_map.c                         :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabdolho <rabdolho@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 11:00:37 by rabdolho          #+#    #+#             */
-/*   Updated: 2026/08/26 11:00:42 by rabdolho         ###   ########.fr       */
+/*   Created: 2026/08/26 10:30:46 by rabdolho          #+#    #+#             */
+/*   Updated: 2026/08/26 10:32:09 by rabdolho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-int	character_validation(char **map)
+int info_validation(t_info *info)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (!(map[i][j] == '0'
-				|| map[i][j] == '1'
-				|| map[i][j] == 'N'
-				|| map[i][j] == 'S'
-				|| map[i][j] == 'E'
-				|| map[i][j] == 'W'
-				|| map[i][j] == ' '))
-				return (0);
-			j++;
-		}
-		i++;
-	}
+	if (!texture_validation(&info->textures))
+		return (printf("Textures validation failed\n"), 0);
+	if (!rgb_validation(info))
+		return (printf("RGB validation failed\n"), 0);
+	if (!map_validation(info))
+		return (printf("Map validation failed\n"), 0);
 	return (1);
 }

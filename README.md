@@ -1,6 +1,6 @@
-# cub3D Parsing
+# cub3D Parsing + Rendering
 
-This repository contains the parsing and validation logic for the `cub3D` project in 42Vienna.
+This repository contains the parsing and validation logic for the `cub3D` project in 42Vienna. the Rendering logic is under development process.
 
 The parser reads a `.cub` configuration file, extracts all required scene information, validates it, and prepares a normalized rectangular map that can be used directly by the raycasting part of the project.
 

@@ -9,11 +9,11 @@
 /*   Updated: 2026/08/26 10:47:27 by rabdolho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-int	file_extension_check(char *filename)
+int file_extension_check(char *filename)
 {
-	int	len;
+	int len;
 
 	if (!filename)
 		return (0);
@@ -25,9 +25,9 @@ int	file_extension_check(char *filename)
 	return (1);
 }
 
-int	is_empty_line(char *line)
+int is_empty_line(char *line)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (line[i] != '\0')
@@ -39,22 +39,17 @@ int	is_empty_line(char *line)
 	return (1);
 }
 
-int	all_data_found(t_info *info)
+int all_data_found(t_info *info)
 {
-	if (!info->textures.NO
-		|| !info->textures.SO
-		|| !info->textures.WE
-		|| !info->textures.EA
-		|| !info->floor
-		|| !info->ceil)
+	if (!info->textures.NO || !info->textures.SO || !info->textures.WE || !info->textures.EA || !info->floor || !info->ceil)
 		return (0);
 	return (1);
 }
 
-void	free_info(t_info *info)
+void free_info(t_info *info)
 {
 	if (!info)
-		return ;
+		return;
 	free(info->textures.NO);
 	free(info->textures.SO);
 	free(info->textures.WE);
@@ -65,12 +60,12 @@ void	free_info(t_info *info)
 	free_array(info->rect_map);
 }
 
-void	free_array(char **array)
+void free_array(char **array)
 {
-	int	i;
+	int i;
 
 	if (!array)
-		return ;
+		return;
 	i = 0;
 	while (array[i])
 	{

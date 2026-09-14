@@ -9,12 +9,12 @@
 /*   Updated: 2026/08/26 10:33:48 by rabdolho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-char	**expand_map(char **map, int map_row)
+char **expand_map(char **map, int map_row)
 {
-	char	**new;
-	int		i;
+	char **new;
+	int i;
 
 	i = 0;
 	new = malloc(sizeof(char *) * (map_row + 2));
@@ -29,10 +29,10 @@ char	**expand_map(char **map, int map_row)
 	return (new);
 }
 
-int	extract_map(char *line, t_info *info)
+int extract_map(char *line, t_info *info)
 {
-	int	i;
-	int	len;
+	int i;
+	int len;
 
 	i = 0;
 	len = ft_strlen(line);

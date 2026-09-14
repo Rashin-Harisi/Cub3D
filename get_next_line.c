@@ -1,8 +1,8 @@
-#include "parsing.h"
+#include "cub3d.h"
 
-int	ft_haschar(char *str, int c)
+int ft_haschar(char *str, int c)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (str[i] && str[i] != c)
@@ -12,9 +12,9 @@ int	ft_haschar(char *str, int c)
 	return (1);
 }
 
-void	ft_moveuntil(char *str, size_t start)
+void ft_moveuntil(char *str, size_t start)
 {
-	size_t	i;
+	size_t i;
 
 	i = -1;
 	while (str[++i + start])
@@ -22,9 +22,9 @@ void	ft_moveuntil(char *str, size_t start)
 	str[i] = 0;
 }
 
-int	ft_lenuntil(char *str, int c)
+int ft_lenuntil(char *str, int c)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (str[i] && str[i] != c)
@@ -34,11 +34,11 @@ int	ft_lenuntil(char *str, int c)
 	return (i);
 }
 
-char	*ft_dupuntil(char *str, int c)
+char *ft_dupuntil(char *str, int c)
 {
-	size_t	i;
-	size_t	len;
-	char	*new_str;
+	size_t i;
+	size_t len;
+	char *new_str;
 
 	i = -1;
 	len = ft_lenuntil(str, c);
@@ -51,13 +51,12 @@ char	*ft_dupuntil(char *str, int c)
 	return (new_str);
 }
 
-
-char	*ft_gnl_linejoin(char *str1, char *str2)
+char *ft_gnl_linejoin(char *str1, char *str2)
 {
-	size_t	i;
-	size_t	str1_len;
-	size_t	str2_len;
-	char	*new_str;
+	size_t i;
+	size_t str1_len;
+	size_t str2_len;
+	char *new_str;
 
 	i = -1;
 	str1_len = 0;
@@ -80,9 +79,9 @@ char	*ft_gnl_linejoin(char *str1, char *str2)
 	return (new_str);
 }
 
-char	*ft_gnl_createline(char *str, long bytes, int fd)
+char *ft_gnl_createline(char *str, long bytes, int fd)
 {
-	char	*new_str;
+	char *new_str;
 
 	new_str = NULL;
 	while (bytes)
@@ -91,7 +90,7 @@ char	*ft_gnl_createline(char *str, long bytes, int fd)
 		if (!new_str)
 			return (NULL);
 		if (ft_haschar(new_str, '\n'))
-			break ;
+			break;
 		bytes = read(fd, str, BUFFER_SIZE);
 		str[bytes] = 0;
 	}
@@ -101,11 +100,11 @@ char	*ft_gnl_createline(char *str, long bytes, int fd)
 	return (new_str);
 }
 
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
-	long		bytes;
-	static char	buf[1024][BUFFER_SIZE + 1];
-	char		*str;
+	long bytes;
+	static char buf[1024][BUFFER_SIZE + 1];
+	char *str;
 
 	bytes = 1;
 	str = NULL;

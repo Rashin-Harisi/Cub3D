@@ -9,12 +9,12 @@
 /*   Updated: 2026/08/26 10:41:14 by rabdolho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-void	get_max_col_and_row(t_info *info)
+void get_max_col_and_row(t_info *info)
 {
-	int	i;
-	int	len;
+	int i;
+	int len;
 
 	i = 0;
 	len = 0;
@@ -29,19 +29,18 @@ void	get_max_col_and_row(t_info *info)
 	info->row = i;
 }
 
-int	is_player(char c)
+int is_player(char c)
 {
-	if (c == 'N' || c == 'S'
-		|| c == 'E' || c == 'W')
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (1);
 	return (0);
 }
 
-int	only_one_player(t_info *info)
+int only_one_player(t_info *info)
 {
-	int	i;
-	int	j;
-	int	count;
+	int i;
+	int j;
+	int count;
 
 	count = 0;
 	i = 0;
@@ -66,7 +65,7 @@ int	only_one_player(t_info *info)
 	return (1);
 }
 
-int	map_validation(t_info *info)
+int map_validation(t_info *info)
 {
 	if (!info || !info->map || !info->map[0])
 		return (0);

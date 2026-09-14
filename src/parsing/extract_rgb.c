@@ -9,9 +9,9 @@
 /*   Updated: 2026/08/26 10:52:15 by rabdolho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-int	extract_floor(char *line, int i, t_info *info)
+int extract_floor(char *line, int i, t_info *info)
 {
 	if (info->floor != NULL)
 		return (printf("Duplicated Floor RGB\n"), 0);
@@ -22,7 +22,7 @@ int	extract_floor(char *line, int i, t_info *info)
 	return (1);
 }
 
-int	extract_ceil(char *line, int i, t_info *info)
+int extract_ceil(char *line, int i, t_info *info)
 {
 	if (info->ceil != NULL)
 		return (printf("Duplicated Ceiling RGB\n"), 0);
@@ -33,10 +33,10 @@ int	extract_ceil(char *line, int i, t_info *info)
 	return (1);
 }
 
-int	fill_rgb(char *line, int *i, char *rgb)
+int fill_rgb(char *line, int *i, char *rgb)
 {
-	int	j;
-	int	status;
+	int j;
+	int status;
 
 	j = 0;
 	while (line[*i] && line[*i] != '\n')
@@ -45,9 +45,9 @@ int	fill_rgb(char *line, int *i, char *rgb)
 		{
 			status = handle_rgb_space(line, i, rgb, j);
 			if (status == 2)
-				break ;
+				break;
 			if (status == 1)
-				continue ;
+				continue;
 			return (0);
 		}
 		rgb[j++] = line[(*i)++];
@@ -56,9 +56,9 @@ int	fill_rgb(char *line, int *i, char *rgb)
 	return (1);
 }
 
-int	handle_rgb_space(char *line, int *i, char *rgb, int j)
+int handle_rgb_space(char *line, int *i, char *rgb, int j)
 {
-	int	a;
+	int a;
 
 	a = *i;
 	skip_spaces(line, &a);
@@ -72,13 +72,10 @@ int	handle_rgb_space(char *line, int *i, char *rgb, int j)
 	return (0);
 }
 
-char	*extract_rgb(char *line, int *i)
+char *extract_rgb(char *line, int *i)
 {
-	char	*rgb;
-	int		j;
-	int		status;
+	char *rgb;
 
-	j = 0;
 	skip_spaces(line, i);
 	if (line[*i] == '\n' || line[*i] == '\0')
 		return (NULL);

@@ -9,18 +9,18 @@
 /*	 Updated: 2026/08/26 11:10:01 by rabdolho		  ###	########.fr		  */
 /*																			  */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-void	skip_spaces(char *line, int *i)
+void skip_spaces(char *line, int *i)
 {
 	while (line[*i] == ' ' || line[*i] == '\t')
 		(*i)++;
 }
 
-char	*copy_path(char *line, int start, int end)
+char *copy_path(char *line, int start, int end)
 {
-	char	*path;
-	int		i;
+	char *path;
+	int i;
 
 	path = malloc(sizeof(char) * (end - start + 1));
 	if (!path)
@@ -32,13 +32,11 @@ char	*copy_path(char *line, int start, int end)
 	return (path);
 }
 
-char	*extract_texture(char *line, int *i)
+char *extract_texture(char *line, int *i)
 {
-	char	*path;
-	int		j;
-	int		start;
+	char *path;
+	int start;
 
-	j = 0;
 	skip_spaces(line, i);
 	if (line[*i] == '\n' || line[*i] == '\0')
 		return (NULL);

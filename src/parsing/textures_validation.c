@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   textures_validation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabdolho <rabdolho@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 10:30:46 by rabdolho          #+#    #+#             */
-/*   Updated: 2026/08/26 10:32:09 by rabdolho         ###   ########.fr       */
+/*   Created: 2026/08/26 10:35:31 by rabdolho          #+#    #+#             */
+/*   Updated: 2026/08/26 10:36:13 by rabdolho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-int	info_validation(t_info *info)
+int path_validation(char *path)
 {
-	if (!texture_validation(&info->textures))
-		return (printf("Textures validation failed\n"), 0);
-	if (!rgb_validation(info))
-		return (printf("RGB validation failed\n"), 0);
-	if (!map_validation(info))
-		return (printf("Map validation failed\n"), 0);
+	int fd;
+
+	if (!path)
+		return (0);
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		return (0);
+	close(fd);
+	return (1);
+}
+
+int texture_validation(t_texture *textures)
+{
+	if (!path_validation(textures->EA))
+		return (0);
+	if (!path_validation(textures->NO))
+		return (0);
+	if (!path_validation(textures->SO))
+		return (0);
+	if (!path_validation(textures->WE))
+		return (0);
 	return (1);
 }

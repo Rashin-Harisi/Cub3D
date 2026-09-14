@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures_validation.c                              :+:      :+:    :+:   */
+/*   character_validation_map.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabdolho <rabdolho@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 10:35:31 by rabdolho          #+#    #+#             */
-/*   Updated: 2026/08/26 10:36:13 by rabdolho         ###   ########.fr       */
+/*   Created: 2026/08/26 11:00:37 by rabdolho          #+#    #+#             */
+/*   Updated: 2026/08/26 11:00:42 by rabdolho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-int	path_validation(char *path)
+int character_validation(char **map)
 {
-	int	fd;
+	int i;
+	int j;
 
-	if (!path)
-		return (0);
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	close(fd);
-	return (1);
-}
-
-int	texture_validation(t_texture *textures)
-{
-	if (!path_validation(textures->EA))
-		return (0);
-	if (!path_validation(textures->NO))
-		return (0);
-	if (!path_validation(textures->SO))
-		return (0);
-	if (!path_validation(textures->WE))
-		return (0);
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (!(map[i][j] == '0' || map[i][j] == '1' || map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == ' '))
+				return (0);
+			j++;
+		}
+		i++;
+	}
 	return (1);
 }

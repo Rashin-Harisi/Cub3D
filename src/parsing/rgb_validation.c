@@ -9,12 +9,12 @@
 /*   Updated: 2026/08/26 10:43:22 by rabdolho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-int	count_character(char *str, char c)
+int count_character(char *str, char c)
 {
-	int	i;
-	int	count;
+	int i;
+	int count;
 
 	i = 0;
 	count = 0;
@@ -27,10 +27,10 @@ int	count_character(char *str, char c)
 	return (count);
 }
 
-char	**simple_rgb_validation(char *str)
+char **simple_rgb_validation(char *str)
 {
-	char	**rgb;
-	int		i;
+	char **rgb;
+	int i;
 
 	i = 0;
 	if (count_character(str, ',') != 2)
@@ -49,11 +49,11 @@ char	**simple_rgb_validation(char *str)
 	return (rgb);
 }
 
-int	*advanced_rgb_validation(char **rgb)
+int *advanced_rgb_validation(char **rgb)
 {
-	int		i;
-	int		j;
-	int		*rgb_int;
+	int i;
+	int j;
+	int *rgb_int;
 
 	i = 0;
 	rgb_int = malloc(sizeof(int) * 3);
@@ -78,11 +78,11 @@ int	*advanced_rgb_validation(char **rgb)
 	return (rgb_int);
 }
 
-int	rgb_check(char *str, int *destination)
+int rgb_check(char *str, int *destination)
 {
-	char	**rgb;
-	int		*rgb_int;
-	int		i;
+	char **rgb;
+	int *rgb_int;
+	int i;
 
 	i = 0;
 	rgb = simple_rgb_validation(str);
@@ -101,7 +101,7 @@ int	rgb_check(char *str, int *destination)
 	return (1);
 }
 
-int	rgb_validation(t_info *info)
+int rgb_validation(t_info *info)
 {
 	if (!rgb_check(info->ceil, info->rgb_ceil))
 		return (0);

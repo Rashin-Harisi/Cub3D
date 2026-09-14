@@ -9,37 +9,31 @@
 /*   Updated: 2026/08/26 10:49:31 by rabdolho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-int	extract_info(char *line, t_info *info)
+int extract_info(char *line, t_info *info)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
-	if (line[i] == 'N' && line[i + 1] == 'O'
-		&& (line[i + 2] == ' ' || line[i + 2] == '\t'))
+	if (line[i] == 'N' && line[i + 1] == 'O' && (line[i + 2] == ' ' || line[i + 2] == '\t'))
 		return (extract_no(line, i, info));
-	if (line[i] == 'S' && line[i + 1] == 'O'
-		&& (line[i + 2] == ' ' || line[i + 2] == '\t'))
+	if (line[i] == 'S' && line[i + 1] == 'O' && (line[i + 2] == ' ' || line[i + 2] == '\t'))
 		return (extract_so(line, i, info));
-	if (line[i] == 'W' && line[i + 1] == 'E'
-		&& (line[i + 2] == ' ' || line[i + 2] == '\t'))
+	if (line[i] == 'W' && line[i + 1] == 'E' && (line[i + 2] == ' ' || line[i + 2] == '\t'))
 		return (extract_we(line, i, info));
-	if (line[i] == 'E' && line[i + 1] == 'A'
-		&& (line[i + 2] == ' ' || line[i + 2] == '\t'))
+	if (line[i] == 'E' && line[i + 1] == 'A' && (line[i + 2] == ' ' || line[i + 2] == '\t'))
 		return (extract_ea(line, i, info));
-	if (line[i] == 'F' && (line[i + 1] == ' '
-			|| line[i + 1] == '\t'))
+	if (line[i] == 'F' && (line[i + 1] == ' ' || line[i + 1] == '\t'))
 		return (extract_floor(line, i, info));
-	if (line[i] == 'C' && (line[i + 1] == ' '
-			|| line[i + 1] == '\t'))
+	if (line[i] == 'C' && (line[i + 1] == ' ' || line[i + 1] == '\t'))
 		return (extract_ceil(line, i, info));
 	return (0);
 }
 
-int	process_line(char *line, t_info *info, int *map_start)
+int process_line(char *line, t_info *info, int *map_start)
 {
 	if (!*map_start)
 	{
@@ -52,10 +46,10 @@ int	process_line(char *line, t_info *info, int *map_start)
 	return (extract_map(line, info));
 }
 
-int	reading_config_file(int fd, t_info *info)
+int reading_config_file(int fd, t_info *info)
 {
-	char	*line;
-	int		map_start;
+	char *line;
+	int map_start;
 
 	map_start = 0;
 	line = get_next_line(fd);
@@ -71,7 +65,7 @@ int	reading_config_file(int fd, t_info *info)
 	return (1);
 }
 
-int	validate_and_normalize(t_info *info)
+int validate_and_normalize(t_info *info)
 {
 	if (!all_data_found(info))
 		return (printf("Error\nInvalid texture configuration\n"), 0);
@@ -82,9 +76,9 @@ int	validate_and_normalize(t_info *info)
 	return (1);
 }
 
-int	read_file(char *file, t_info *info)
+int read_file(char *file, t_info *info)
 {
-	int	fd;
+	int fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
@@ -98,9 +92,9 @@ int	read_file(char *file, t_info *info)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_info	info;
+	t_info info;
 
 	info = (t_info){0};
 	if (argc != 2)

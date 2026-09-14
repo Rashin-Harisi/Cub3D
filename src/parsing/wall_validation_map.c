@@ -9,11 +9,11 @@
 /*   Updated: 2026/08/26 11:01:12 by rabdolho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-int	last_non_space_character(char *line)
+int last_non_space_character(char *line)
 {
-	int	len;
+	int len;
 
 	len = ft_strlen(line);
 	if (len == 0)
@@ -28,9 +28,9 @@ int	last_non_space_character(char *line)
 	return (1);
 }
 
-int	first_non_space_character(char *line)
+int first_non_space_character(char *line)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (line[i] == ' ')
@@ -40,9 +40,9 @@ int	first_non_space_character(char *line)
 	return (1);
 }
 
-int	top_bottom_wall(char *line)
+int top_bottom_wall(char *line)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (line[i])
@@ -54,9 +54,9 @@ int	top_bottom_wall(char *line)
 	return (1);
 }
 
-int	wall_validation(t_info *info)
+int wall_validation(t_info *info)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (info->map[i])

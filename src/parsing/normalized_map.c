@@ -9,12 +9,12 @@
 /*	 Updated: 2026/08/26 10:24:29 by rabdolho		  ###	########.fr		  */
 /*																			  */
 /* ************************************************************************** */
-#include "parsing.h"
+#include "cub3d.h"
 
-static int	fill_rect_map_row(t_info *info, int i)
+static int fill_rect_map_row(t_info *info, int i)
 {
-	int	j;
-	int	len;
+	int j;
+	int len;
 
 	j = 0;
 	len = 0;
@@ -39,9 +39,9 @@ static int	fill_rect_map_row(t_info *info, int i)
 	return (1);
 }
 
-int	normalized_map(t_info *info)
+int normalized_map(t_info *info)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	info->rect_map = malloc(sizeof(char *) * (info->row + 1));
