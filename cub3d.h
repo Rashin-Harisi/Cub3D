@@ -13,34 +13,40 @@
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 64
 #endif
-
-
-#define WIDTH 1000
-#define HEIGHT 700
+//=======================DEFINES==============================//
+#define WIDTH       1000
+#define HEIGHT      700
+#define KEY_ESC		65307
+#define KEY_W		119
+#define KEY_A		97
+#define KEY_S		115
+#define KEY_D		100
+#define KEY_LEFT	65361
+#define KEY_RIGHT	65363
 
 typedef struct s_texture
 {
-    char *NO;
-    char *SO;
-    char *WE;
-    char *EA;
-} t_texture;
+    char    *NO;
+    char    *SO;
+    char    *WE;
+    char    *EA;
+}   t_texture;
 
 typedef struct s_info
 {
-    t_texture textures;
-    char *floor;
-    char *ceil;
-    int rgb_floor[3];
-    int rgb_ceil[3];
-    char **map;
-    char **rect_map;
-    int map_row;
-    int max_col;
-    int row;
-    int player[2]; //[x,y]
-    char player_dir;
-} t_info;
+    t_texture   textures;
+    char        *floor;
+    char        *ceil;
+    int         rgb_floor[3];
+    int         rgb_ceil[3];
+    char        **map;
+    char        **rect_map;
+    int         map_row;
+    int         max_col;
+    int         row;
+    int         player[2]; //[x,y]
+    char        player_dir;
+}   t_info;
 
 
 typedef struct s_game
